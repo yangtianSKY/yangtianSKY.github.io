@@ -1554,7 +1554,13 @@ body {
       "scores = cross_val_score(model, X_train, y_train, cv=5)",
       "from sklearn.metrics import cross_val_score"
     ],
-    "explanation": "cross_val_score位于sklearn.model_selection模块，直接传入完整数据集X和y以及cv折数，无需手动划分训练/测试集。"
+    "explanation": "cross_val_score位于sklearn.model_selection模块，直接传入完整数据集X和y以及cv折数，无需手动划分训练/测试集。",
+    "flexible_groups": [
+      [
+        0,
+        1
+      ]
+    ]
   },
   {
     "id": "p_basic_015",
@@ -1630,7 +1636,13 @@ body {
       "param_grid = {'C': [0.01, 0.1, 1, 10], 'penalty': ['l1', 'l2']}",
       "from sklearn.metrics import GridSearchCV"
     ],
-    "explanation": "GridSearchCV来自sklearn.model_selection。param_grid定义搜索的参数网格，cv=5指定5折交叉验证。best_params_返回最优参数组合。"
+    "explanation": "GridSearchCV来自sklearn.model_selection。param_grid定义搜索的参数网格，cv=5指定5折交叉验证。best_params_返回最优参数组合。",
+    "flexible_groups": [
+      [
+        0,
+        1
+      ]
+    ]
   },
   {
     "id": "p_basic_019",
@@ -1668,7 +1680,13 @@ body {
       "sns.heatmap(cm, annot=False)",
       "from sklearn.linear_model import confusion_matrix"
     ],
-    "explanation": "confusion_matrix来自sklearn.metrics。annot=True在热力图格子中显示数值，fmt='d'格式化为整数，cmap指定颜色方案。"
+    "explanation": "confusion_matrix来自sklearn.metrics。annot=True在热力图格子中显示数值，fmt='d'格式化为整数，cmap指定颜色方案。",
+    "flexible_groups": [
+      [
+        0,
+        1
+      ]
+    ]
   },
   {
     "id": "p_basic_021",
@@ -1714,7 +1732,15 @@ body {
       "pipe = Pipeline([StandardScaler(), LogisticRegression()])",
       "scores = cross_val_score(pipe, X_train, y_train, cv=5)"
     ],
-    "explanation": "Pipeline需要一个由(name, estimator)元组组成的列表。使用Pipeline确保交叉验证中每一步都在训练集上拟合并正确应用到验证集，避免数据泄露。"
+    "explanation": "Pipeline需要一个由(name, estimator)元组组成的列表。使用Pipeline确保交叉验证中每一步都在训练集上拟合并正确应用到验证集，避免数据泄露。",
+    "flexible_groups": [
+      [
+        0,
+        1,
+        2,
+        3
+      ]
+    ]
   },
   {
     "id": "p_basic_023",
@@ -1754,7 +1780,13 @@ body {
       "from sklearn.decomposition import RFE",
       "rfe = RFE(model, n_components=3)"
     ],
-    "explanation": "RFE来自sklearn.feature_selection。n_features_to_select指定要保留的特征数，support_返回每个特征是否被选中的布尔数组。"
+    "explanation": "RFE来自sklearn.feature_selection。n_features_to_select指定要保留的特征数，support_返回每个特征是否被选中的布尔数组。",
+    "flexible_groups": [
+      [
+        0,
+        1
+      ]
+    ]
   },
   {
     "id": "p_basic_025",
@@ -1818,7 +1850,15 @@ body {
       "pipe = Pipeline([PolynomialFeatures(degree=2), StandardScaler(), Ridge()])",
       "scores = cross_val_score(pipe, X, y, cv=5, scoring='accuracy')"
     ],
-    "explanation": "PolynomialFeatures生成多项式特征，StandardScaler标准化，Ridge做回归。Pipeline需要(name, estimator)元组列表。neg_mean_squared_error取负用于MSE，取负恢复正值。"
+    "explanation": "PolynomialFeatures生成多项式特征，StandardScaler标准化，Ridge做回归。Pipeline需要(name, estimator)元组列表。neg_mean_squared_error取负用于MSE，取负恢复正值。",
+    "flexible_groups": [
+      [
+        0,
+        1,
+        2,
+        3
+      ]
+    ]
   },
   {
     "id": "c_algo_001",
@@ -2609,7 +2649,13 @@ body {
       "scores = cross_validate(model, X, y, folds=5)",
       "from sklearn.validation import cross_val_score"
     ],
-    "explanation": "正确的步骤为：(1) cross_val_score 位于 sklearn.model_selection（新版本）而非 sklearn.validation 或 sklearn.cross_validation；(2) 函数名是 cross_val_score 而非 cross_validate；(3) 折数参数是 cv=5 而非 folds=5；(4) scores.mean() 计算各折准确率的均值。"
+    "explanation": "正确的步骤为：(1) cross_val_score 位于 sklearn.model_selection（新版本）而非 sklearn.validation 或 sklearn.cross_validation；(2) 函数名是 cross_val_score 而非 cross_validate；(3) 折数参数是 cv=5 而非 folds=5；(4) scores.mean() 计算各折准确率的均值。",
+    "flexible_groups": [
+      [
+        0,
+        1
+      ]
+    ]
   },
   {
     "id": "p_algo_011",
@@ -2629,7 +2675,13 @@ body {
       "importances = model.feature_importance_",
       "indices = np.sort(importances)[::-1]"
     ],
-    "explanation": "正确的步骤为：(1) 属性名是 feature_importances_（复数，有末尾下划线），而非 feature_importance_；(2) np.argsort() 返回排序后的索引（用于获取按重要性排序的特征编号），结合 [::-1] 实现降序排列；(3) np.sort() 返回排序后的值而非索引，无法用于获取原始特征顺序。"
+    "explanation": "正确的步骤为：(1) 属性名是 feature_importances_（复数，有末尾下划线），而非 feature_importance_；(2) np.argsort() 返回排序后的索引（用于获取按重要性排序的特征编号），结合 [::-1] 实现降序排列；(3) np.sort() 返回排序后的值而非索引，无法用于获取原始特征顺序。",
+    "flexible_groups": [
+      [
+        0,
+        1
+      ]
+    ]
   },
   {
     "id": "p_algo_012",
@@ -2650,7 +2702,13 @@ body {
       "grid = GridSearch(RandomForestClassifier(), param_grid)",
       "grid.train(X_train, y_train)"
     ],
-    "explanation": "正确的步骤为：(1) 从 sklearn.model_selection 导入 GridSearchCV；(2) param_grid 以字典形式定义搜索空间；(3) GridSearchCV 的第一个参数是模型对象，第二个是参数网格；(4) cv=5 指定5折交叉验证；(5) 使用 fit 而非 train 进行训练；(6) best_params_ 属性查看最优参数。"
+    "explanation": "正确的步骤为：(1) 从 sklearn.model_selection 导入 GridSearchCV；(2) param_grid 以字典形式定义搜索空间；(3) GridSearchCV 的第一个参数是模型对象，第二个是参数网格；(4) cv=5 指定5折交叉验证；(5) 使用 fit 而非 train 进行训练；(6) best_params_ 属性查看最优参数。",
+    "flexible_groups": [
+      [
+        0,
+        1
+      ]
+    ]
   },
   {
     "id": "p_algo_013",
@@ -2671,7 +2729,13 @@ body {
       "pipeline.add_step('scaler', StandardScaler())",
       "pipeline.transform(X_train, y_train)"
     ],
-    "explanation": "正确的步骤为：(1) 导入必要的模块；(2) 使用 train_test_split 划分数据，test_size=0.2 表示20%作为测试集；(3) Pipeline 接受一个步骤列表，每个步骤是 (名称, 转换器/估计器) 的元组；(4) Pipeline 必须传入元组列表而非直接传入对象；(5) pipeline.transform() 不存在——Pipeline 使用 fit/predict 接口。"
+    "explanation": "正确的步骤为：(1) 导入必要的模块；(2) 使用 train_test_split 划分数据，test_size=0.2 表示20%作为测试集；(3) Pipeline 接受一个步骤列表，每个步骤是 (名称, 转换器/估计器) 的元组；(4) Pipeline 必须传入元组列表而非直接传入对象；(5) pipeline.transform() 不存在——Pipeline 使用 fit/predict 接口。",
+    "flexible_groups": [
+      [
+        0,
+        1
+      ]
+    ]
   },
   {
     "id": "p_algo_014",
@@ -2878,7 +2942,13 @@ body {
       "pipe = Pipeline(steps=[StandardScaler, RandomForestClassifier])",
       "pipe.add(SelectKBest(f_classif, k=10))"
     ],
-    "explanation": "关键点：(1) SelectKBest 配合 f_classif 评分函数选择最佳K个特征，SelectFromModel 是另一种特征选择方式（基于模型的特征重要性）；(2) Pipeline 的参数是步骤元组列表，每个步骤需要 (名称, 对象) 格式，不能直接传类；(3) Pipeline 创建后不可用 .add() 追加步骤；(4) cross_val_score 自动处理训练/验证划分。"
+    "explanation": "关键点：(1) SelectKBest 配合 f_classif 评分函数选择最佳K个特征，SelectFromModel 是另一种特征选择方式（基于模型的特征重要性）；(2) Pipeline 的参数是步骤元组列表，每个步骤需要 (名称, 对象) 格式，不能直接传类；(3) Pipeline 创建后不可用 .add() 追加步骤；(4) cross_val_score 自动处理训练/验证划分。",
+    "flexible_groups": [
+      [
+        0,
+        1
+      ]
+    ]
   },
   {
     "id": "p_algo_024",
@@ -3663,7 +3733,13 @@ body {
       "    W = W - lr + dW",
       "    b = b * lr - db"
     ],
-    "explanation": "梯度下降的更新公式是 θ = θ - η * ∇L(θ)，即沿着梯度的反方向移动一步。所以 `W = W - lr * dW` 是正确的。迷惑块 `W + lr * dW` 沿梯度方向更新（梯度上升），会导致损失增大。`W - lr + dW` 将学习率从参数更新中分离，且学习率的作用方式与标准公式不符。`b * lr - db` 将偏置乘以学习率，而非用学习率缩放梯度。"
+    "explanation": "梯度下降的更新公式是 θ = θ - η * ∇L(θ)，即沿着梯度的反方向移动一步。所以 `W = W - lr * dW` 是正确的。迷惑块 `W + lr * dW` 沿梯度方向更新（梯度上升），会导致损失增大。`W - lr + dW` 将学习率从参数更新中分离，且学习率的作用方式与标准公式不符。`b * lr - db` 将偏置乘以学习率，而非用学习率缩放梯度。",
+    "flexible_groups": [
+      [
+        1,
+        2
+      ]
+    ]
   },
   {
     "id": "p_nn_006",
@@ -3978,7 +4054,17 @@ body {
       "    dA1 = W2.T @ dZ2",
       "    dZ1 = dA1 * z1 * (1 - z1)"
     ],
-    "explanation": "两层 Sigmoid 网络的反向传播要求严格按链式法则计算。核心步骤：(1) dZ2 = dA2 * a2*(1-a2)，用 a2（Sigmoid 输出）计算 Sigmoid 的局部导数；(2) dW2 = a1.T @ dZ2，权重梯度 = 该层输入的转置 × 该层梯度；(3) db2 = sum(dZ2, axis=0)，偏置梯度 = 对 dZ2 按样本维度求和；(4) dA1 = dZ2 @ W2.T，将梯度通过权重矩阵反向传播到上一层；(5) dZ1 = dA1 * a1*(1-a1)，隐层 Sigmoid 的梯度；(6) dW1 = X.T @ dZ1, db1 = sum(dZ1)。常见错误：使用 z 而非 a 计算 Sigmoid 导数（dZ2 = dA2 * z2*(1-z2)），虽然结果一样因为 a2=Sigmoid(z2)，但通常用 a2 因为已经缓存了。dW2 的维度计算错误（a1.T @ dZ2 vs dZ2 @ a1.T）会导致形状不匹配。W2.T @ dZ2 中矩阵乘法顺序错误。"
+    "explanation": "两层 Sigmoid 网络的反向传播要求严格按链式法则计算。核心步骤：(1) dZ2 = dA2 * a2*(1-a2)，用 a2（Sigmoid 输出）计算 Sigmoid 的局部导数；(2) dW2 = a1.T @ dZ2，权重梯度 = 该层输入的转置 × 该层梯度；(3) db2 = sum(dZ2, axis=0)，偏置梯度 = 对 dZ2 按样本维度求和；(4) dA1 = dZ2 @ W2.T，将梯度通过权重矩阵反向传播到上一层；(5) dZ1 = dA1 * a1*(1-a1)，隐层 Sigmoid 的梯度；(6) dW1 = X.T @ dZ1, db1 = sum(dZ1)。常见错误：使用 z 而非 a 计算 Sigmoid 导数（dZ2 = dA2 * z2*(1-z2)），虽然结果一样因为 a2=Sigmoid(z2)，但通常用 a2 因为已经缓存了。dW2 的维度计算错误（a1.T @ dZ2 vs dZ2 @ a1.T）会导致形状不匹配。W2.T @ dZ2 中矩阵乘法顺序错误。",
+    "flexible_groups": [
+      [
+        2,
+        3
+      ],
+      [
+        6,
+        7
+      ]
+    ]
   },
   {
     "id": "p_nn_020",
@@ -4025,7 +4111,13 @@ body {
       "    dL_db = dL_dy + 1",
       "    dL_dw = dL_dy / x"
     ],
-    "explanation": "按照链式法则推导：L = (y - y_true)²，y = wx + b。(1) dL/dy = 2(y - y_true)，来自 (·)² 的导数 2(·)；(2) dL/dw = dL/dy * ∂y/∂w = dL/dy * x，因为 ∂(wx+b)/∂w = x；(3) dL/db = dL/dy * ∂y/∂b = dL/dy * 1，因为 ∂(wx+b)/∂b = 1。常见错误：(1) 忘记 MSE 的系数 2（虽然可以吸收进学习率，但严格推导应包含）；(2) 链式法则用加法(+)代替乘法(*)；(3) dL/dw = dL/dy/x（除法错误）；(4) 在计算图中反向传播时，加法节点的上游梯度直接传回（乘以 1），乘法节点的上游梯度乘以对另一个输入的值。"
+    "explanation": "按照链式法则推导：L = (y - y_true)²，y = wx + b。(1) dL/dy = 2(y - y_true)，来自 (·)² 的导数 2(·)；(2) dL/dw = dL/dy * ∂y/∂w = dL/dy * x，因为 ∂(wx+b)/∂w = x；(3) dL/db = dL/dy * ∂y/∂b = dL/dy * 1，因为 ∂(wx+b)/∂b = 1。常见错误：(1) 忘记 MSE 的系数 2（虽然可以吸收进学习率，但严格推导应包含）；(2) 链式法则用加法(+)代替乘法(*)；(3) dL/dw = dL/dy/x（除法错误）；(4) 在计算图中反向传播时，加法节点的上游梯度直接传回（乘以 1），乘法节点的上游梯度乘以对另一个输入的值。",
+    "flexible_groups": [
+      [
+        3,
+        4
+      ]
+    ]
   },
   {
     "id": "p_nn_022",
@@ -4505,12 +4597,79 @@ body {
     _checkPuzzle: function(q, userBlocks) {
       var correctBlocks = q.correct_blocks;
       var userTexts = userBlocks.map(function(b) { return b.text || b; });
-      var matched = 0;
-      for (var i = 0; i < Math.min(userTexts.length, correctBlocks.length); i++) {
-        if (userTexts[i] === correctBlocks[i]) matched++;
-      }
+      var bestMatch = this._findBestMatch(correctBlocks, q.flexible_groups, userTexts);
+      var matched = bestMatch.matched;
       var score = correctBlocks.length > 0 ? matched / correctBlocks.length : 0;
+      // 存储最佳匹配排列，供高亮使用
+      q._bestMatchOrder = bestMatch.order;
       return { correct: score >= 1, score: score, explanation: q.explanation };
+    },
+
+    // 生成所有有效排列并找出最佳匹配
+    _findBestMatch: function(correctBlocks, flexibleGroups, userTexts) {
+      // 生成所有有效排列
+      var allOrders = this._generateValidOrders(correctBlocks, flexibleGroups);
+      var bestMatched = 0;
+      var bestOrder = correctBlocks;
+      for (var o = 0; o < allOrders.length; o++) {
+        var order = allOrders[o];
+        var matched = 0;
+        for (var i = 0; i < Math.min(userTexts.length, order.length); i++) {
+          if (userTexts[i] === order[i]) matched++;
+        }
+        if (matched > bestMatched) {
+          bestMatched = matched;
+          bestOrder = order;
+        }
+      }
+      return { matched: bestMatched, order: bestOrder };
+    },
+
+    // 根据 flexible_groups 生成所有有效排列
+    _generateValidOrders: function(correctBlocks, flexibleGroups) {
+      if (!flexibleGroups || flexibleGroups.length === 0) {
+        return [correctBlocks];
+      }
+
+      // 深拷贝基础排列
+      var base = correctBlocks.slice();
+      var orders = [base.slice()];
+
+      // 对每个 flexible group，为已有排列生成该组内元素的排列变体
+      for (var g = 0; g < flexibleGroups.length; g++) {
+        var group = flexibleGroups[g];
+        // 收集该组在当前位置的值
+        var groupValues = group.map(function(idx) { return base[idx]; });
+        var perms = this._permute(groupValues);
+        // 对每个已有排列 × 每个排列变体
+        var newOrders = [];
+        for (var p = 0; p < orders.length; p++) {
+          for (var pm = 0; pm < perms.length; pm++) {
+            var copy = orders[p].slice();
+            for (var i = 0; i < group.length; i++) {
+              copy[group[i]] = perms[pm][i];
+            }
+            newOrders.push(copy);
+          }
+        }
+        orders = newOrders;
+      }
+      return orders;
+    },
+
+    // 生成数组的所有排列
+    _permute: function(arr) {
+      if (arr.length <= 1) return [arr.slice()];
+      var result = [];
+      for (var i = 0; i < arr.length; i++) {
+        var first = arr[i];
+        var rest = arr.slice(0, i).concat(arr.slice(i + 1));
+        var subPerms = this._permute(rest);
+        for (var j = 0; j < subPerms.length; j++) {
+          result.push([first].concat(subPerms[j]));
+        }
+      }
+      return result;
     },
     _highlightConceptAnswer: function(q, userAnswer) {
       var cards = document.querySelectorAll('.option-card');
@@ -4519,10 +4678,10 @@ body {
       if (userAnswer >= 0 && userAnswer !== q.correct) cards[userAnswer].classList.add('wrong');
     },
     _highlightPuzzleAnswer: function(q, state) {
-      var correctBlocks = q.correct_blocks;
+      var bestOrder = q._bestMatchOrder || q.correct_blocks;
       document.querySelectorAll('.answer-block').forEach(function(block, i) {
         var userText = state.selectedBlocks[i] ? state.selectedBlocks[i].text : '';
-        if (i < correctBlocks.length && userText === correctBlocks[i]) block.classList.add('correct-block');
+        if (i < bestOrder.length && userText === bestOrder[i]) block.classList.add('correct-block');
         else block.classList.add('wrong-block');
       });
       document.querySelectorAll('.pool-block, .answer-block').forEach(function(b) { b.style.pointerEvents = 'none'; });
